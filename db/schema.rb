@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2023_07_26_080108) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.decimal "price", precision: 10, scale: 2
+    t.text "description"
+    t.text "img"
     t.integer "brand_id"
     t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
