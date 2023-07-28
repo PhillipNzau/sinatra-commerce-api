@@ -12,6 +12,8 @@ class ApplicationController < Sinatra::Base
         product = Product.create({
             name: params[:name],
             price: params[:price],
+            description: params[:description],
+            img: params[:img],
             brand_id: params[:brand_id],
             category_id: params[:category_id]
         })
