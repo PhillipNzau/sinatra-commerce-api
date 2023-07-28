@@ -1,7 +1,7 @@
 class ApplicationController < Sinatra::Base
     set :default_content_type, 'application/json'   
 
-    ## Product Routes
+    ## Product all Routes
     get "/products" do
         products = Product.all
         products.to_json
@@ -20,5 +20,18 @@ class ApplicationController < Sinatra::Base
         else
           # Handle errors
         end
+    end
+
+    ## selected
+    get '/products/:id' do
+      product = Product.find(params[:id])
+
+      sel_prod = [
+        product: product,
+        brand: product.brand,
+        category: product.category
+      ]
+      # product.to_json
+      sel_prod.to_json
     end
 end

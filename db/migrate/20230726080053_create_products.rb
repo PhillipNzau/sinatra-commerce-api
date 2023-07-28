@@ -5,8 +5,8 @@ class CreateProducts < ActiveRecord::Migration[6.1]
       t.decimal :price, precision: 10, scale: 2
       t.text :description
       t.text :img
-      t.integer :brand_id
-      t.integer :category_id
+      t.references :brand, null: false, foreign_key: true
+      t.references :category, null: false, foreign_key: true
       # Add other product attributes
 
       t.timestamps

@@ -19,8 +19,8 @@ product1 = Product.create(
   price: 19.99,
   description: 'Description for Product 1',
   img: 'https://picsum.photos/200/300', # Replace with the actual image path or URL
-  brand_id: brand1.id,
-  category_id: category1.id
+  brand: brand1,
+  category: category1
 )
 
 product2 = Product.create(
@@ -28,6 +28,6 @@ product2 = Product.create(
   price: 29.99,
   description: 'Description for Product 2',
   img: 'https://picsum.photos/200/300', # Replace with the actual image path or URL
-  brand_id: brand2.id,
-  category_id: category2.id
+  brand: brand1,
+  category: category1
 )

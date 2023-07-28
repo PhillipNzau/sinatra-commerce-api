@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
     belongs_to :brand
-    has_and_belongs_to_many :categories
+    belongs_to :category
     # Add other associations as needed
   end
