@@ -25,4 +25,25 @@ class ApplicationController < Sinatra::Base
         end
     end
 
+      ## Update (Partial Update) for Brands
+  put '/brands/:id' do
+    @brand = Brand.find(params[:id])
+
+    if @brand.update(partial_brand_params)
+      redirect '/brands'
+    else
+      # Handle errors
+      # For example, you can render a JSON response with an error message
+      status 400
+      { error: 'Failed to update brand' }.to_json
+    end
+  end
+
+  private
+
+  # Method to permit only the selected fields for update
+  def partial_brand_params
+    params.slice(:name, :description)
+  end
+
 end
