@@ -44,19 +44,31 @@ class ApplicationController < Sinatra::Base
     end
 
     ## patch 
-    patch '/products/:id' do
-      product = Product.find_by(id: params[:id])
+    put '/products/:id' do
+      @product = Product.find(params[:id])
       
-      product = Product.update({
-        name: params[:name],
-        price: params[:price],
-        description: params[:description],
-        img: params[:img],
-        brand: params[:brand],
-        category: params[:category]
-      })
+      # product = Product.update({
+      #   name: params[:name],
+      #   price: params[:price],
+      #   description: params[:description],
+      #   img: params[:img],
+      #   brand: params[:brand],
+      #   category: params[:category]
+      # })
+      if @product.update(partial_product_params)
+        redirect '/products'
+      else
+        # Handle errors
+        # For example, you can render a JSON response with an error message
+        status 400
+        { error: 'Failed to update product' }.to_json
+      end
+    end
 
-        redirect '/products/#{params[:id]}'
-      
+    private
+
+    # Method to permit only the selected fields for update
+    def partial_product_params
+      params.slice(:name, :price, :description, :img, :brand_id, :category_id)
     end
 end

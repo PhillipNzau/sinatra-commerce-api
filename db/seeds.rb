@@ -28,6 +28,6 @@ product2 = Product.create(
   price: 29.99,
   description: 'Description for Product 2',
   img: 'https://picsum.photos/200/300', # Replace with the actual image path or URL
-  brand: brand1,
-  category: category1
+  brand: brand2,
+  category: category2
 )
