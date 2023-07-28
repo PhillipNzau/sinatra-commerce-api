@@ -7,6 +7,12 @@ class ApplicationController < Sinatra::Base
         brands.to_json
     end
 
+     ## Selected Brands Routes
+     get "/brands/:id" do
+      brand = Brand.find_by(id: params[:id])
+      brand.to_json
+    end
+
     post '/brands' do
         brand = Brand.create({
             name: params[:name],
@@ -18,4 +24,5 @@ class ApplicationController < Sinatra::Base
           # Handle errors
         end
     end
+
 end

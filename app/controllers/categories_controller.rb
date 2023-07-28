@@ -7,6 +7,14 @@ class ApplicationController < Sinatra::Base
         categories.to_json
         # categories.to_json(include: [:categories, :suppliers, :purchases])
     end
+
+     ## Selected Brands Routes
+     get "/categories/:id" do
+      category = Category.find_by(id: params[:id])
+      category
+      .to_json
+    end
+
     post '/categories' do
         category = Category.create({
             name: params[:name],
@@ -17,5 +25,10 @@ class ApplicationController < Sinatra::Base
         else
           # Handle errors
         end
+    end
+
+    delete '/categories/:id' do
+      category = Category.find_by(id: params[:id])
+      category.destroy
     end
 end

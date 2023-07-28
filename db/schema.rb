@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 2023_07_26_080108) do
     t.decimal "price", precision: 10, scale: 2
     t.text "description"
     t.text "img"
-    t.integer "brand_id", null: false
-    t.integer "category_id", null: false
+    t.integer "brand_id"
+    t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
